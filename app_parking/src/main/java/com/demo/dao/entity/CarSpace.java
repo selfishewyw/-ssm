@@ -1,7 +1,7 @@
 package com.demo.dao.entity;
 
 public class CarSpace {
-    private Integer id; //车位id
+    private String id; //车位id
     private String name;//车位名
     private String status;//车位状态
     private String stopnum;//停车次数
@@ -9,6 +9,22 @@ public class CarSpace {
     private String nowcar;//当前停车号
     private String settlementime;//最后停车时间
     private String createtime;//创建时间
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getStatus() {
         return status;
@@ -34,11 +50,11 @@ public class CarSpace {
         this.stopsumtime = stopsumtime;
     }
 
-    public String getNowCar() {
+    public String getNowcar() {
         return nowcar;
     }
 
-    public void setNowCar(String nowcar) {
+    public void setNowcar(String nowcar) {
         this.nowcar = nowcar;
     }
 
@@ -47,7 +63,7 @@ public class CarSpace {
     }
 
     public void setSettlementime(String settlementime) {
-        settlementime = settlementime;
+        this.settlementime = settlementime;
     }
 
     public String getCreatetime() {
@@ -58,19 +74,17 @@ public class CarSpace {
         this.createtime = createtime;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String toString() {
+        return "CarSpace{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status='" + status + '\'' +
+                ", stopnum='" + stopnum + '\'' +
+                ", stopsumtime='" + stopsumtime + '\'' +
+                ", nowcar='" + nowcar + '\'' +
+                ", settlementime='" + settlementime + '\'' +
+                ", createtime='" + createtime + '\'' +
+                '}';
     }
 }

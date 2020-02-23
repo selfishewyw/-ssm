@@ -22,4 +22,17 @@ public class CarSpaceServiceImpl implements CarSpaceService {
     public int addCarSpace(CarSpace carSpace) {
         return carSpaceDao.insert(carSpace);
     }
+
+    public List<CarSpace> selectCarSpaceByLimit(CarSpace carSpace, int currentPage, int pageSize) {
+        int start = (currentPage - 1) *pageSize;
+        return carSpaceDao.selectCarSpaceByLimit(carSpace,start,pageSize);
+    }
+
+    public List<CarSpace> selectparkingByCarSpace(CarSpace carSpace) {
+        return carSpaceDao.selectCarSpaceByCarSpace(carSpace);
+    }
+
+    public Integer stopcar(CarSpace carSpace) {
+        return carSpaceDao.update(carSpace);
+    }
 }

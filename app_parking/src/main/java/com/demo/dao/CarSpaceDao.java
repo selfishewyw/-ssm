@@ -1,7 +1,9 @@
 package com.demo.dao;
 
 import com.demo.dao.entity.CarSpace;
+import com.demo.dao.entity.Parkingrecord;
 import com.demo.dao.entity.UserEntity;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -48,5 +50,22 @@ public interface CarSpaceDao {
      * @return
      */
     List<CarSpace> selectcarspaceall();
+
+    /**
+     * 分页查询
+     * @param carSpace
+     * @param start
+     * @param pageSize
+     * @return
+     */
+    List<CarSpace> selectCarSpaceByLimit(@Param("carSpace") CarSpace carSpace, @Param("start")int start, @Param("pageSize")int pageSize);
+
+
+    /**
+     * 条件查询
+     * @param carSpace
+     * @return
+     */
+    List<CarSpace> selectCarSpaceByCarSpace(@Param("carSpace") CarSpace carSpace );
 
 }

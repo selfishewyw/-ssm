@@ -2,6 +2,9 @@ package com.demo.dao;
 
 
 import com.demo.dao.entity.Parkingrecord;
+import com.demo.dao.entity.UserEntity;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -16,4 +19,21 @@ public interface ParkingrecordDao {
      * @return
      */
     List<Parkingrecord> selectAll();
+
+    /**
+     * 分页查询
+     * @param parking
+     * @param start
+     * @param pageSize
+     * @return
+     */
+    List<Parkingrecord> selectparkingByLimit(@Param("parking") Parkingrecord parking, @Param("start")int start, @Param("pageSize")int pageSize);
+
+
+    /**
+     * 条件查询
+     * @param parking
+     * @return
+     */
+    List<Parkingrecord> selectparkingByparkging(@Param("parking") Parkingrecord parking );
 }

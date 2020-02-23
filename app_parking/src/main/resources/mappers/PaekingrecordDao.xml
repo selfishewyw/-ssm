@@ -30,4 +30,40 @@
         FROM t_parkingrecord
         WHERE 1 = 1;
     </select>
+<!--    <select id="selectparkingByLimit" resultType="com.demo.dao.entity.Parkingrecord">-->
+<!--        SELECT *-->
+<!--        FROM t_parkingrecord-->
+<!--        <where>-->
+<!--            <if test="parking != null">-->
+<!--                <if test="parking.name != null and  parking.name != ''">-->
+<!--                    AND name LIKE concat(#{parking.name},'%')-->
+<!--                </if>-->
+<!--                <if test="parking.nowcar != null and parking.nowcar != ''">-->
+<!--                    AND nowcar LIKE concat(#{parking.nowcar},'%')-->
+<!--                </if>-->
+<!--                <if test="parking.status != null and parking.status != ''">-->
+<!--                    AND status = #{parking.status}-->
+<!--                </if>-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        limit #{start} , #{pageSize}-->
+<!--    </select>-->
+
+<!--    <select id="selectparkingByparkging" resultType="com.demo.dao.entity.Parkingrecord">-->
+<!--        SELECT *-->
+<!--        FROM t_parkingrecord-->
+<!--        <where>-->
+<!--            <if test="parking != null">-->
+<!--                <if test="parking.name != null and  parking.name != ''">-->
+<!--                    AND name LIKE concat(#{parking.name},'%')-->
+<!--                </if>-->
+<!--                <if test="parking.nowcar != null and parking.nowcar != ''">-->
+<!--                    AND nowcar LIKE concat(#{parking.nowcar},'%')-->
+<!--                </if>-->
+<!--                <if test="parking.status != null and parking.status != ''">-->
+<!--                    AND status = #{parking.status}-->
+<!--                </if>-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
 </mapper>
