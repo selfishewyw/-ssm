@@ -9,6 +9,15 @@ public class CarSpace {
     private String nowcar;//当前停车号
     private String settlementime;//最后停车时间
     private String createtime;//创建时间
+    private String userid;//占用用户
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
     public String getId() {
         return id;

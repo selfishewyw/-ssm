@@ -65,14 +65,19 @@ public class CarSpaceController {
 
     @RequestMapping(value = "stopcar", method = RequestMethod.GET)
     @ResponseBody
-    public Json stopcar(@RequestParam("id") String id, @RequestParam("nowcar") String nowcar, @RequestParam("stopnum") String stopnum){
+    public Json stopcar(@RequestParam("id") String id,
+                        @RequestParam("nowcar") String nowcar,
+                        @RequestParam("userid") String userid,
+                        @RequestParam("stopnum") String stopnum){
         Json json = new Json();
         CarSpace carSpace = new CarSpace();
         carSpace.setId(id);
         carSpace.setStatus("1");
         carSpace.setNowcar(nowcar);
+        carSpace.setUserid(userid);
         carSpace.setStopnum((Integer.parseInt(stopnum)+1) +"");
         carSpace.setSettlementime(Tool.getTime());
+
         try {
             int count = carSpaceService.stopcar(carSpace);
 
@@ -95,6 +100,7 @@ public class CarSpaceController {
                            @RequestParam("status") String status,
                            @RequestParam("nowcar") String nowcar,
                            @RequestParam("settlementime") String settlementime,
+                           @RequestParam("userid") String userid,
                            @RequestParam("sumprice") String sumprice
                            ){
         Json json = new Json();
@@ -108,9 +114,10 @@ public class CarSpaceController {
         parkingrecord.setCarnumber(nowcar);
         parkingrecord.setCarspaceid(id);
         parkingrecord.setCarspacename(name);
-        parkingrecord.setDuration(stopsumtime);
+        parkingrecord.setDuration(sumtime);
         parkingrecord.setCreatetime(settlementime);
         parkingrecord.setParkingfee(sumprice);
+        parkingrecord.setCreateman(userid);
         try {
             int count = carSpaceService.settlement(carSpace);
             int count1 = parkingrecordService.insert(parkingrecord);

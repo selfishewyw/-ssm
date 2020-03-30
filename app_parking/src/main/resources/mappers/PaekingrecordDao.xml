@@ -44,6 +44,9 @@
                 <if test="parking.parkingfee != null and parking.parkingfee != ''">
                     AND parkingfee = #{parking.parkingfee}
                 </if>
+                <if test="parking.createman != null and parking.createman != ''">
+                    AND createman = #{parking.createman}
+                </if>
             </if>
         </where>
         order by endtime desc
@@ -63,6 +66,9 @@
                 </if>
                 <if test="parking.parkingfee != null and parking.parkingfee != ''">
                     AND parkingfee = #{parking.parkingfee}
+                </if>
+                <if test="parking.createman != null and parking.createman != ''">
+                    AND createman = #{parking.createman}
                 </if>
             </if>
         </where>

@@ -27,13 +27,19 @@ public class ParkingrecordController {
 
     @RequestMapping(value = "selectparkingByLimit", method = RequestMethod.GET)
     @ResponseBody
-    public Json selectparkingByLimit(@RequestParam("currentPage") String currentPage, @RequestParam("pageSize") String pageSize, @RequestParam("carspacename") String carspacename, @RequestParam("carnumber") String carnumber, @RequestParam("parkingfee") String parkingfee){
+    public Json selectparkingByLimit(@RequestParam("currentPage") String currentPage,
+                                     @RequestParam("pageSize") String pageSize,
+                                     @RequestParam("userid") String userid,
+                                     @RequestParam("carspacename") String carspacename,
+                                     @RequestParam("carnumber") String carnumber,
+                                     @RequestParam("parkingfee") String parkingfee){
 
         Json json = new Json();
         Parkingrecord parkingrecord = new Parkingrecord();
         parkingrecord.setParkingfee(parkingfee);
         parkingrecord.setCarnumber(carnumber);
         parkingrecord.setCarspacename(carspacename);
+        parkingrecord.setCreateman(userid);
         try {
             List carSpaces = parkingrecordService.selectparkingByLimit(parkingrecord,Integer.parseInt(currentPage),Integer.parseInt(pageSize));
             json.setRowList(carSpaces);
