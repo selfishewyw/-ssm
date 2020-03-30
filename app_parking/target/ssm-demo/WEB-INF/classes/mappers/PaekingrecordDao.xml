@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.demo.dao.ParkingrecordDao">
-<!--    <insert id="insert" parameterType="com.demo.dao.entity.Parkingrecord">-->
-<!--        INSERT INTO-->
-<!--        t_carspace (id,name,status,stopnum,stopsumtime,nowcar,settlementime,createtime)-->
-<!--        VALUES(#{id},#{name},#{status},#{stopnum},#{stopsumtime},#{nowcar},#{settlementime},#{createtime});-->
-<!--    </insert>-->
+    <insert id="insert" parameterType="com.demo.dao.entity.Parkingrecord">
+        INSERT INTO
+        t_parkingrecord (id,carspaceid,carnumber,endtime,carspacename,duration,parkingfee,createman,createtime)
+        VALUES(#{id},#{carspaceid},#{carnumber},now(),#{carspacename},#{duration},#{parkingfee},#{createman},#{createtime});
+    </insert>
 <!--    <update id="update" parameterType="com.demo.dao.entity.Parkingrecord">-->
 <!--        UPDATE t_carspace-->
 <!--        SET id=#{id} WHERE id=#{id},name=#{name}-->
@@ -30,40 +30,41 @@
         FROM t_parkingrecord
         WHERE 1 = 1;
     </select>
-<!--    <select id="selectparkingByLimit" resultType="com.demo.dao.entity.Parkingrecord">-->
-<!--        SELECT *-->
-<!--        FROM t_parkingrecord-->
-<!--        <where>-->
-<!--            <if test="parking != null">-->
-<!--                <if test="parking.name != null and  parking.name != ''">-->
-<!--                    AND name LIKE concat(#{parking.name},'%')-->
-<!--                </if>-->
-<!--                <if test="parking.nowcar != null and parking.nowcar != ''">-->
-<!--                    AND nowcar LIKE concat(#{parking.nowcar},'%')-->
-<!--                </if>-->
-<!--                <if test="parking.status != null and parking.status != ''">-->
-<!--                    AND status = #{parking.status}-->
-<!--                </if>-->
-<!--            </if>-->
-<!--        </where>-->
-<!--        limit #{start} , #{pageSize}-->
-<!--    </select>-->
+    <select id="selectparkingByLimit" resultType="com.demo.dao.entity.Parkingrecord">
+        SELECT *
+        FROM t_parkingrecord
+        <where>
+            <if test="parking != null">
+                <if test="parking.carspacename != null and  parking.carspacename != ''">
+                    AND carspacename LIKE concat('%',#{parking.carspacename},'%')
+                </if>
+                <if test="parking.carnumber != null and parking.carnumber != ''">
+                    AND carnumber LIKE concat('%',#{parking.carnumber},'%')
+                </if>
+                <if test="parking.parkingfee != null and parking.parkingfee != ''">
+                    AND parkingfee = #{parking.parkingfee}
+                </if>
+            </if>
+        </where>
+        order by endtime desc
+        limit #{start} , #{pageSize}
+    </select>
 
-<!--    <select id="selectparkingByparkging" resultType="com.demo.dao.entity.Parkingrecord">-->
-<!--        SELECT *-->
-<!--        FROM t_parkingrecord-->
-<!--        <where>-->
-<!--            <if test="parking != null">-->
-<!--                <if test="parking.name != null and  parking.name != ''">-->
-<!--                    AND name LIKE concat(#{parking.name},'%')-->
-<!--                </if>-->
-<!--                <if test="parking.nowcar != null and parking.nowcar != ''">-->
-<!--                    AND nowcar LIKE concat(#{parking.nowcar},'%')-->
-<!--                </if>-->
-<!--                <if test="parking.status != null and parking.status != ''">-->
-<!--                    AND status = #{parking.status}-->
-<!--                </if>-->
-<!--            </if>-->
-<!--        </where>-->
-<!--    </select>-->
+    <select id="selectparkingByparkging" resultType="com.demo.dao.entity.Parkingrecord">
+        SELECT *
+        FROM t_parkingrecord
+        <where>
+            <if test="parking != null">
+                <if test="parking.carspacename != null and  parking.carspacename != ''">
+                    AND carspacename LIKE concat('%',#{parking.carspacename},'%')
+                </if>
+                <if test="parking.carnumber != null and parking.carnumber != ''">
+                    AND carnumber LIKE concat('%',#{parking.carnumber},'%')
+                </if>
+                <if test="parking.parkingfee != null and parking.parkingfee != ''">
+                    AND parkingfee = #{parking.parkingfee}
+                </if>
+            </if>
+        </where>
+    </select>
 </mapper>

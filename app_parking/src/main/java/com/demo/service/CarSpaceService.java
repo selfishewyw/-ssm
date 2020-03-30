@@ -33,4 +33,18 @@ public interface CarSpaceService {
      * @return
      */
     Integer stopcar(CarSpace carSpace);
+
+    /**
+     * 结算
+     * @param carSpace
+     * @return
+     */
+    Integer settlement(CarSpace carSpace);
+
+    /**
+     * 修改
+     * @param carSpace
+     * @return
+     */
+    Integer parkingedit(CarSpace carSpace);
 }

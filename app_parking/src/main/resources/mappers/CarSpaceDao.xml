@@ -11,9 +11,17 @@
     </insert>
     <update id="update" parameterType="com.demo.dao.entity.CarSpace">
         UPDATE t_carspace
-        SET  status=#{status}, nowcar=#{nowcar}, stopnum=#{stopnum} WHERE id=#{id}
+        SET  status=#{status}, settlementime = now() , nowcar=#{nowcar}, stopnum=#{stopnum} WHERE id=#{id}
+    </update>
+    <update id="parkingedit" parameterType="com.demo.dao.entity.CarSpace">
+        UPDATE t_carspace
+        SET  name=#{name}, settlementime = #{settlementime} , stopnum=#{stopnum} ,stopsumtime = #{stopsumtime} WHERE id=#{id}
     </update>
 
+    <update id="settlement" parameterType="com.demo.dao.entity.CarSpace">
+        UPDATE t_carspace
+        SET  status=#{status} , nowcar=#{nowcar} ,stopsumtime =#{stopsumtime} WHERE id=#{id}
+    </update>
     <select id="selectById" resultType="com.demo.dao.entity.CarSpace" parameterType="java.lang.Integer">
         SELECT *
         FROM t_carspace
@@ -36,17 +44,20 @@
         <where>
             <if test="carSpace != null">
                 <if test="carSpace.name != null and  carSpace.name != ''">
-                    AND name LIKE concat(#{carSpace.name},'%')
+                    AND name LIKE concat('%',#{carSpace.name},'%')
                 </if>
                 <if test="carSpace.nowcar != null and carSpace.nowcar != ''">
-                    AND nowcar LIKE concat(#{carSpace.nowcar},'%')
+                    AND nowcar LIKE concat('%',#{carSpace.nowcar},'%')
                 </if>
                 <if test="carSpace.status != null and carSpace.status != ''">
                     AND status = #{carSpace.status}
                 </if>
             </if>
         </where>
+        order by name ASC
+
         limit #{start} , #{pageSize}
+
     </select>
 
     <select id="selectCarSpaceByCarSpace" resultType="com.demo.dao.entity.CarSpace">

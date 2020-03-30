@@ -17,4 +17,19 @@ public interface ParkingrecordService {
      */
     List<Parkingrecord> selectparkingByLimit(Parkingrecord parking, int currentPage, int pageSize);
 
+
+    /**
+     * 条件查询
+     * @param parking
+     * @return
+     */
+    List<Parkingrecord> selectparkingByparkging(@Param("parking") Parkingrecord parking );
+
+
+    /**
+     * 增加数据
+     * @param parkingrecord
+     * @return
+     */
+    Integer insert (Parkingrecord parkingrecord);
 }

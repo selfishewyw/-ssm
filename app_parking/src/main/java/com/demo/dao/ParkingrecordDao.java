@@ -36,4 +36,11 @@ public interface ParkingrecordDao {
      * @return
      */
     List<Parkingrecord> selectparkingByparkging(@Param("parking") Parkingrecord parking );
+
+    /**
+     * 增加数据
+     * @param parkingrecord
+     * @return
+     */
+    Integer insert (Parkingrecord parkingrecord);
 }

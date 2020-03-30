@@ -2,7 +2,7 @@ package com.demo.dao.entity;
 
 public class Parkingrecord {
 
-    private Integer id; //停车记录id
+    private String id; //停车记录id
     private String carspaceid;//外键车位表
     private String carspacename;//外键车位名
     private String carnumber;//车牌号
@@ -11,11 +11,11 @@ public class Parkingrecord {
     private String parkingfee;//停车费
     private String createman;//创建人
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -23,4 +23,12 @@ public class ParkingrecordServiceImpl implements ParkingrecordService {
 
         return parkingrecordDao.selectparkingByLimit(parking,start,pageSize);
     }
+
+    public List<Parkingrecord> selectparkingByparkging(Parkingrecord parking) {
+        return parkingrecordDao.selectparkingByparkging(parking);
+    }
+
+    public Integer insert(Parkingrecord parkingrecord) {
+        return parkingrecordDao.insert(parkingrecord);
+    }
 }

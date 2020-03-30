@@ -25,4 +25,26 @@ public class ParkingrecordController {
     }
 
 
+    @RequestMapping(value = "selectparkingByLimit", method = RequestMethod.GET)
+    @ResponseBody
+    public Json selectparkingByLimit(@RequestParam("currentPage") String currentPage, @RequestParam("pageSize") String pageSize, @RequestParam("carspacename") String carspacename, @RequestParam("carnumber") String carnumber, @RequestParam("parkingfee") String parkingfee){
+
+        Json json = new Json();
+        Parkingrecord parkingrecord = new Parkingrecord();
+        parkingrecord.setParkingfee(parkingfee);
+        parkingrecord.setCarnumber(carnumber);
+        parkingrecord.setCarspacename(carspacename);
+        try {
+            List carSpaces = parkingrecordService.selectparkingByLimit(parkingrecord,Integer.parseInt(currentPage),Integer.parseInt(pageSize));
+            json.setRowList(carSpaces);
+            json.setIsSuccess(true);
+            json.setHttpstatus(200);
+            json.setCount(parkingrecordService.selectparkingByparkging(parkingrecord).size());
+            json.setMessage("查询成功");
+        }catch (Exception e){
+            json.setMessage(e.getMessage());
+        }
+        return  json;
+    }
+
 }

@@ -68,4 +68,12 @@ public interface CarSpaceDao {
      */
     List<CarSpace> selectCarSpaceByCarSpace(@Param("carSpace") CarSpace carSpace );
 
+    /**
+     * 结算
+     * @param carSpace
+     * @return
+     */
+    Integer settlement(CarSpace carSpace);
+
+    Integer parkingedit(CarSpace carSpace);
 }

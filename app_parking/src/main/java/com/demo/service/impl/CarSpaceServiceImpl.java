@@ -35,4 +35,17 @@ public class CarSpaceServiceImpl implements CarSpaceService {
     public Integer stopcar(CarSpace carSpace) {
         return carSpaceDao.update(carSpace);
     }
+
+    /**
+     * 结算
+     * @param carSpace
+     * @return
+     */
+    public Integer settlement(CarSpace carSpace) {
+        return carSpaceDao.settlement(carSpace);
+    }
+
+    public Integer parkingedit(CarSpace carSpace) {
+        return carSpaceDao.parkingedit(carSpace);
+    }
 }
